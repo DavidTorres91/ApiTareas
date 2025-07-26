@@ -105,7 +105,7 @@ export class TareaController {
     },
   })
   async findById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @param.filter(Tarea, {exclude: 'where'}) filter?: FilterExcludingWhere<Tarea>
   ): Promise<Tarea> {
     return this.tareaRepository.findById(id, filter);
@@ -116,7 +116,7 @@ export class TareaController {
     description: 'Tarea PATCH success',
   })
   async updateById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @requestBody({
       content: {
         'application/json': {
@@ -134,7 +134,7 @@ export class TareaController {
     description: 'Tarea PUT success',
   })
   async replaceById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @requestBody() tarea: Tarea,
   ): Promise<void> {
     await this.tareaRepository.replaceById(id, tarea);
@@ -144,7 +144,7 @@ export class TareaController {
   @response(204, {
     description: 'Tarea DELETE success',
   })
-  async deleteById(@param.path.number('id') id: number): Promise<void> {
+  async deleteById(@param.path.string('id') id: string): Promise<void> {
     await this.tareaRepository.deleteById(id);
   }
 }

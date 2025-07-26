@@ -3,11 +3,11 @@ import {Entity, model, property} from '@loopback/repository';
 @model()
 export class Tarea extends Entity {
   @property({
-    type: 'number',
+    type: 'any',
     id: true,
     generated: true,
   })
-  Id?: number;
+  Id?: any;
 
   @property({
     type: 'string',
